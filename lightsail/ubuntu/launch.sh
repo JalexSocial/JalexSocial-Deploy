@@ -17,26 +17,26 @@ apt-get update && \
 apt-get install -y dotnet-sdk-7.0
   
 
-mkdir /var/archimedes  
-cd /var/archimedes
-git clone https://github.com/RoverLink/archimedes-deploy  
-chown -R ubuntu:ubuntu /var/archimedes
+mkdir /var/jalexweb  
+cd /var/jalexweb
+git clone https://github.com/JalexSocial/jalexsocial-deploy
+chown -R ubuntu:ubuntu /var/jalexweb
 
-cp /var/archimedes/archimedes-deploy/lightsail/ubuntu/scripts/services/archimedes.service /etc/systemd/system/
-cp /var/archimedes/archimedes-deploy/lightsail/ubuntu/scripts/nginx/sites-available/* /etc/nginx/sites-available
+cp /var/jalexweb/jalexsocial-deploy/lightsail/ubuntu/scripts/services/jalexweb.service /etc/systemd/system/
+cp /var/jalexweb/jalexsocial-deploy/lightsail/ubuntu/scripts/nginx/sites-available/* /etc/nginx/sites-available
 
-ln -s /etc/nginx/sites-available/archimedes /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/jalexweb /etc/nginx/sites-enabled/
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 
-systemctl enable archimedes
+systemctl enable jalexweb
 systemctl enable nginx
 
-mkdir /var/www/archimedes
-chown ubuntu /var/www/archimedes
+mkdir /var/www/jalexweb
+chown ubuntu /var/www/jalexweb
 
-chmod 755 /var/archimedes/archimedes-deploy/lightsail/ubuntu/scripts/certbot/install-certbot.sh
+chmod 755 /var/jalexweb/jalexsocial-deploy/lightsail/ubuntu/scripts/certbot/install-certbot.sh
 
-certbot --nginx --non-interactive --agree-tos --redirect -m mike@logic-gate.com -d archimedes.jalex.io
+certbot --nginx --non-interactive --agree-tos --redirect -m mike@logic-gate.com -d dev.jalex.io
 
 # Enable firewall
 apt-get install ufw

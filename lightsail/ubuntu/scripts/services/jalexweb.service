@@ -1,12 +1,12 @@
 [Unit]
-Description=Archimedes
+Description=JalexWeb
 
 [Service]
-WorkingDirectory=/var/www/archimedes
-ExecStart=/usr/bin/dotnet /var/www/archimedes/Archimedes.dll
+WorkingDirectory=/var/www/jalexweb
+ExecStart=/usr/bin/dotnet /var/www/jalexweb/JalexWeb.dll
 Restart=always
 RestartSec=10
-SyslogIdentifier=Archimedes
+SyslogIdentifier=JalexWeb
 User=www-data
 Environment=ASPNETCORE_ENVIRONMENT=Production
 Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
